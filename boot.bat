@@ -1,0 +1,1 @@
+java -jar target/AlienWeb-1.0-SNAPSHOT.jar

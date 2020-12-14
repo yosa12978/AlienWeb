@@ -30,6 +30,10 @@ public class Chain {
         return pendingTransactions;
     }
 
+    public void setPendingTransactions(List<Transaction> pendingTransactions) {
+        this.pendingTransactions = pendingTransactions;
+    }
+
     public Block getLatest(){
         return chain.get(chain.size() - 1);
     }
@@ -74,10 +78,12 @@ public class Chain {
         double rightLimit = 3D;
         double generatedReward = leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);
         Transaction rewardTransaction = new Transaction("null", minerAddress, generatedReward);
-        createTransaction(rewardTransaction);
-        Block finalBlock = new Block(getLatest().getHash(), pendingTransactions, new Date().getTime());
+        List<Transaction> preparingTransactions = pendingTransactions;
+        preparingTransactions.add(rewardTransaction);
+        Block finalBlock = new Block(getLatest().getHash(), preparingTransactions, new Date().getTime());
         finalBlock.mineBlock(4);
         addBlock(finalBlock);
         pendingTransactions = new ArrayList<Transaction>();
+        new LogService().log("Block with hash: " + finalBlock.getHash() + " mined with reward: " + generatedReward +" ACH");
     }
 }
