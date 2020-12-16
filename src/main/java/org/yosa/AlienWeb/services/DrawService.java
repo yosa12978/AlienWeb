@@ -24,15 +24,7 @@ public class DrawService {
                 "| 2. Create Transaction\n" +
                 "| 3. Connect To Server\n" +
                 "| 4. Mine Block\n" +
-                "| 5. Save And Exit\n"+ "------------ ");
-    }
-
-    public void drawLogin(){
-        logger.log("------------\n" +
-                "||| MENU |||\n" +
-                "------------\n" +
-                "| 1. Connect Wallet\n" +
-                "| 2. Create New Wallet\n" +
-                "| 3. Exit\n"+ "------------ ");
+                "| 5. Show Nodes\n" +
+                "| 6. Save And Exit\n"+ "------------ ");
     }
 }

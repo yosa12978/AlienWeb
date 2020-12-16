@@ -7,6 +7,7 @@ import org.yosa.AlienWeb.domain.Block;
 import org.yosa.AlienWeb.domain.Chain;
 import org.yosa.AlienWeb.domain.Transaction;
 import org.yosa.AlienWeb.network.Client;
+import org.yosa.AlienWeb.network.Node;
 import org.yosa.AlienWeb.network.Server;
 import org.yosa.AlienWeb.network.Wallet;
 import org.yosa.AlienWeb.services.DrawService;
@@ -122,7 +123,18 @@ public class AlienWebApplication {
             }else if (option == 4){
                 alienCash.mineBlock(user.getPublicKey());
                 client.broadcast(gson.toJson(alienCash));
-            }else if (option == 5){
+            }else if(option == 5) {
+                try{
+                    for(int i = 0; i <= Client.nodes.size(); i++)
+                    logger.log("----------" +
+                            "Node" + i +
+                            "Address: " + Client.nodes.get(i) +
+                            "Port: " + Client.nodes.get(i) +
+                            "----------");
+                }catch(Exception e){
+                    logger.log("No nodes connected yet.");
+                }
+            }else if (option == 6){
                 saveBlockchain();
                 System.exit(0);
             }

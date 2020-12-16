@@ -1,0 +1,2 @@
+netsh advfirewall firewall add rule name="AlienWeb P2P" dir=in action=allow protocol=TCP localport=3639
+netsh advfirewall firewall add rule name="AlienWeb P2P" dir=out action=allow protocol=TCP localport=3639
